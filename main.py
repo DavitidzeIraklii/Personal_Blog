@@ -62,7 +62,7 @@ class BlogPost(db.Model):
     date = db.Column(db.String(250), nullable=False)
     body = db.Column(db.Text, nullable=False)
     img_url = db.Column(db.String(250), nullable=False)
-    comments_of_post =  relationship('Comment', back_populates='')
+    comments_of_post = relationship('Comment', back_populates='post')
 
 
 class Comment(db.Model):
