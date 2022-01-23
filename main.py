@@ -75,7 +75,7 @@ class Comment(db.Model):
     post = relationship('BlogPost', back_populates='comments_of_post')
     text = db.Column(db.String(500), nullable=False)
 
-# db.create_all()
+db.create_all()
 
 
 
