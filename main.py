@@ -160,7 +160,7 @@ def show_post(post_id):
         else:
             flash("Please, log in for making a comment.")
             return redirect(url_for('login'))
-    return render_template("post.html", post=requested_post, form=form, comments=comments_of_this_post)
+    return render_template("post.html", post=requested_post, form=form, comments=comments_of_this_post, logged_in=current_user.is_authenticated)
 
 
 @app.route("/about")
@@ -189,7 +189,7 @@ def add_new_post():
         db.session.add(new_post)
         db.session.commit()
         return redirect(url_for("get_all_posts"))
-    return render_template("make-post.html", form=form)
+    return render_template("make-post.html", form=form, logged_in=current_user.is_authenticated)
 
 
 @app.route("/edit-post/<int:post_id>", methods=['GET', 'POST'])
